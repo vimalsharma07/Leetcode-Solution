@@ -15,7 +15,7 @@ class Solution {
         ListNode f= head;
         while(f.next!=null && f.next.next!=null){
             s=s.next;
-            f=f.next;
+            f=f.next.next;
         }
         
         return s;
@@ -36,17 +36,11 @@ class Solution {
     }
     public boolean isPalindrome(ListNode head) {
         
-       ListNode dummy = new ListNode(-1);
-        ListNode temp = head, temp2 = dummy;
-        while(temp != null) {
-            temp2.next = new ListNode(temp.val);
-            temp2 = temp2.next;
-            temp = temp.next;
-        }
-        ListNode sh = dummy.next;
-        dummy.next = null;
-        sh = Reverse(sh);
-        while(head != null) {
+       ListNode mid =Middle(head), sh= mid.next;
+        System.out.print(mid.val);
+        mid.next=null;
+        sh=  Reverse(sh);
+        while(head != null && sh!=null) {
             if(head.val != sh.val) return false;
             head = head.next;
             sh = sh.next;
