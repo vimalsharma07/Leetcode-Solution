@@ -1,18 +1,20 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
         int n= nums.length;
-        // count the zeros and make nums all positive
-        int count_zero=0;
-        for(int i=0; i<n; i++){
-            if(nums[i]==0)count_zero++;
-            if(nums[i]<0){
-                nums[i]=nums[i]*(-1);
+        int[]ans= new int[n];
+        int s=0;
+        int e=n-1;
+        int idx= n-1;
+        
+        while(e>=s){
+            if(Math.abs(nums[s])>=Math.abs(nums[e])){
+                ans[idx--]=nums[s]*nums[s];
+                s++;
+            }else{
+                ans[idx--]=nums[e]*nums[e];
+                e--;
             }
         }
-        Arrays.sort(nums);
-        for(int i=0; i<n; i++){
-            nums[i]= nums[i]*nums[i];
-        }
-        return nums;
+        return ans;
     }
 }
