@@ -10,17 +10,21 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode list= new ListNode(-1,null);
-        ListNode temp=head;
         
-        while(temp!=null){
-            ListNode ans= new ListNode(temp.val,list.next);
-            list.next=ans;
-            temp=temp.next;
-        }
-        
-        return list.next;
+        ListNode c=head;
+        ListNode p=null;
+        ListNode n=head;
+       return Reverse_rec(c,p,n);
+    }
     
+    public static ListNode Reverse_rec(ListNode c, ListNode p, ListNode n){
+        if(c==null)return p;
+        
+        n= n.next;
+        c.next=p;
+        p=c;
+        c=n;
+        return  Reverse_rec(c,p,n);
         
     }
 }
