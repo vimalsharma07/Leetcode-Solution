@@ -1,25 +1,17 @@
-class Solution {
+
+   class Solution {
     public char repeatedCharacter(String s) {
-        int n= s.length();
-        
-        int first_occerence=0;
-        int second_occerence=n;
+       int n= s.length();
+        int ans=n;
+        int fre[]= new int[26];
         for(int i=0; i<n; i++){
             char ch= s.charAt(i);
-            for(int j=i+1; j<n; j++){
-                char sh= s.charAt(j);
-                if(ch==sh){
-                    if(j>second_occerence){
-                        continue;
-                    }else{
-                        second_occerence=j;
-                        first_occerence=i;
-                    }
-                   
-                   
-                }
+            fre[ch-'a']++;
+            if(fre[ch-'a']==2){
+                ans=i;
+                break;
             }
         }
-        return  s.charAt(first_occerence);
+        return s.charAt(ans);
     }
 }
