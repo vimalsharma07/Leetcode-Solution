@@ -14,14 +14,15 @@ class Solution {
         for(int i=0; i<26; i++){
             
             if(fre[i]==1){
-                int ch= i+(int)('a');
-               char  sh= (char)ch;
+                // check the character which frequency is one 
+                int character_fre= i+(int)('a');
+               char  sh= (char)character_fre;
                 
-                
+                // search that character in string 
                  for(int j=0; j<n; j++){
-                char sha= s.charAt(j);
-                if(sh==sha){
-                    ans= Math.min(j,ans);
+                char ch= s.charAt(j);
+                if(sh==ch){
+                    ans= Math.min(j,ans);// update the first occerquence of minium index
                 }
             }
             }
