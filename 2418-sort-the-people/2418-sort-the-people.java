@@ -4,15 +4,15 @@ class Solution {
         int n= heights.length;
         String[]temp= new String[n];
         
-        for(int i=0; i<n; i++){
-            hm.put(heights[i],i);
-        }
+        // for(int i=0; i<n; i++){
+        //     hm.put(heights[i],i);
+        // }
         
         PriorityQueue<Pair> pq= new PriorityQueue<>();
         
-        for(int i : hm.keySet()){
-            int idx= hm.get(i);
-            Pair ans= new Pair(i,idx);
+        for(int i=0; i<n; i++){
+        
+            Pair ans= new Pair(heights[i],i);
             pq.add(ans);
         }
         int j=0;
