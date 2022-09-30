@@ -1,37 +1,33 @@
 class Solution {
-    public List<String> findAndReplacePattern(String[] words, String pattern) {
-        List<String> res = new ArrayList<>();
-        for (String word : words) {
-            if (check(word, pattern)) res.add(word);
+    public static String Pattern (String str){
+        int n= str.length();
+        HashMap<Character,Integer> hm= new HashMap<>();
+        int ctr=0;
+        StringBuilder ans= new StringBuilder ();
+        for(int i=0; i<n; i++){
+            if(hm.containsKey(str.charAt(i))){
+                ans.append(Integer.toString(hm.get(str.charAt(i))));
+                ctr++;
+            }else{
+                hm.put(str.charAt(i),ctr);
+                ans.append(Integer.toString(ctr));
+
+                ctr++;
+            }
         }
-        return res;
+        return ans.toString();
     }
-    
-    boolean check(String word, String pattern) {
-        for (int i = 0; i < word.length(); i++) {
-            int idx_word=0,  idx_pattern=0;
-            char ch= word.charAt(i);
-            char sh= pattern.charAt(i);
-            
-            for(int j=0; j<word.length(); j++){
-                char target= word.charAt(j);
-                if(target==ch){
-                    idx_word=j;
-                    break;
-                }
-            }
-            
-             for(int k=0; k<pattern.length(); k++){
-                char target2= pattern.charAt(k);
-                if(target2==sh){
-                    idx_pattern=k;
-                    break;
-                }
-            }
-            if(idx_word!=idx_pattern)return false;
-            
+    public List<String> findAndReplacePattern(String[] words, String pattern) {
+       
+        List<String> list= new ArrayList<>();
         
+        String main_pattern= Pattern(pattern);
+        for(String s : words){
+            String temp= Pattern(s);
+            if(temp.equals(main_pattern)){
+                list.add(s);
+            }
         }
-        return true;
+        return list;
     }
 }
