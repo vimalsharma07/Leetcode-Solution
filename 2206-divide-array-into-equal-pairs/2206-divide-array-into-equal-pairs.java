@@ -1,17 +1,14 @@
 class Solution {
     public boolean divideArray(int[] nums) {
-       int n= nums.length;
-      
-        if(n%2!=0)return false;
-        int pair = n/2;
+        int n= nums.length;
+        if(n%2 !=0 )return false;
+        int pair= n/2;
         Arrays.sort(nums);
-        int i=1; 
-        int compare =0;
-        while(i<n){
-          if(nums[i]==nums[i-1])compare++;
-            i+=2;
+        int ans=0;
+        for(int i=1; i<n; i+=2){
+            if(nums[i]==nums[i-1])ans++;
         }
+        return ans==pair;
         
-        return compare==pair;
     }
 }
